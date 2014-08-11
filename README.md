@@ -3,7 +3,9 @@ base-tumblr
 
 ## Overview
 This repo attempts to marry base-marionette with the needs of custom tumblr themes.  
+
 It's roughly based off of the html from [https://github.com/davesantos/tumblr-boilerplate](https://github.com/davesantos/tumblr-boilerplate)
+
 Most of the tumblr html action happens in [https://github.com/UseAllFive/base-tumblr/blob/master/web/index.html](https://github.com/UseAllFive/base-tumblr/blob/master/web/index.html)
 
 ## Getting started
