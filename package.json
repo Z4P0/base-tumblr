@@ -1,8 +1,8 @@
 {
-  "name": "base-marionette",
+  "name": "base-tumblr",
   "repository": {
     "type": "git",
-    "url": "git@github.com:UseAllFive/base-marionette.git"
+    "url": "git@github.com:UseAllFive/base-tumblr.git"
   },
   "version": "0.0.1",
   "devDependencies": {
