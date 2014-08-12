@@ -17,7 +17,6 @@ module.exports = function(grunt) {
     var isDevLintTask;
     var isDevTasks;
     var pkg;
-    var urls;
     var username = process.env.UA5_USER || process.env.USER || 'unknown_user';
     var watchJavascriptFiles = [];
     var watchRequireFiles = {
@@ -27,7 +26,6 @@ module.exports = function(grunt) {
 
     pkg = grunt.file.readJSON('package.json');
     config = grunt.file.readYAML('config/grunt.yml').config;
-    urls = grunt.file.readJSON('config/urls.json');
     isDevTasks = !(_.contains(grunt.cli.tasks, 'deploy') || _.contains(grunt.cli.tasks, 'prod'));
 
     // If this is the `dev-lint` task, then assign javascript files to be
@@ -104,22 +102,6 @@ module.exports = function(grunt) {
                 strip: 'web/js'
             }
         },
-        htmlSnapshot: {
-            all: {
-                options: {
-                    snapshotPath: 'application/templates/snapshots/',
-                    sitePath: 'http://localhost:12080',
-                    haltOnError: false,
-                    //filename prefix for snapshot files
-                    fileNamePrefix: 'app',
-                    msWaitForPages: 4000,
-                    replaceStrings: [
-                        {'http://localhost:12080': 'http://app.appspot.com'}
-                    ],
-                    urls: urls
-                }
-            }
-        },
         jshint: {
             options: {
                 jshintrc: true
@@ -156,14 +138,6 @@ module.exports = function(grunt) {
         open: {
             deploy: {
                 path: 'http://<%= grunt.config("bump.increment") ? sanitizeVersion(pkg.version) : "' + username + '" %>.app.appspot.com'
-            }
-        },
-        'phantom-crawler': {
-            crawl: {
-                options: {
-                    baseUrl: 'http://localhost:12080',
-                    filePath: 'config/urls.json'
-                }
             }
         },
         prompt: {
