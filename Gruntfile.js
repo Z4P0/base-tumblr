@@ -320,6 +320,7 @@ module.exports = function(grunt) {
         'svgstore',
         'newer:imagemin:build',
         'prepare_livereload',
+        'requirejs:prod',
         'watch'
     ];
     grunt.registerTask('default', devTasks);
