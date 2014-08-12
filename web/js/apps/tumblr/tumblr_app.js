@@ -1,14 +1,14 @@
 define([
     'app',
-    'apps/example/show/example_show_controller'
+    'apps/tumblr/show/tumblr_show_controller'
 ], function(App, Controller) {
-    App.module('ExampleApp', function(ExampleApp, App, Backbone, Marionette, $, _) {
+    App.module('TumblrApp', function(TumblrApp, App, Backbone, Marionette, $, _) {
         var API;
 
         // Do not start automatically
         this.startWithParent = false;
 
-        ExampleApp.Router = Marionette.AppRouter.extend({
+        TumblrApp.Router = Marionette.AppRouter.extend({
             appRoutes: {
                 '': 'show'
             }
@@ -16,27 +16,27 @@ define([
 
         API = {
             show: function() {
-                new ExampleApp.Show.Controller({
-                    region: App.exampleRegion
+                new TumblrApp.Show.Controller({
+                    region: App.tumblrRegion
                 });
 
                 // Notify application
-                App.trigger('example:show');
+                App.trigger('tumblr:show');
             }
         };
 
         App.addInitializer(function() {
-            new ExampleApp.Router({
+            new TumblrApp.Router({
                 controller: API
             });
         });
 
-        App.commands.setHandler('example:show', function() {
+        App.commands.setHandler('tumblr:show', function() {
             App.navigate('');
 
             API.show();
         });
     });
 
-    return App.ExampleApp;
+    return App.TumblrApp;
 });

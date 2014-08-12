@@ -1,10 +1,10 @@
 define([
     'app',
-    'apps/example/show/example_show_view'
+    'apps/tumblr/show/tumblr_show_view'
 ], function(App, View) {
-    App.module('ExampleApp.Show', function(ExampleApp, App, Backbone, Marionette, $, _) {
+    App.module('TumblrApp.Show', function(TumblrApp, App, Backbone, Marionette, $, _) {
 
-        ExampleApp.Controller = Marionette.Controller.extend({
+        TumblrApp.Controller = Marionette.Controller.extend({
             initialize: function() {
                 this.layout = new View.Layout();
 
@@ -44,5 +44,5 @@ define([
         });
     });
 
-    return App.ExampleApp.Show.Controller;
+    return App.TumblrApp.Show.Controller;
 });

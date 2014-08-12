@@ -23,7 +23,7 @@ define([
 
     // Add regions
     App.addRegions({
-        exampleRegion: '.example-region'
+        contentRegion: '.content'
     });
 
     // Fires after the Application has started and after the initializers
@@ -32,8 +32,8 @@ define([
         // Start the history. All subapps must be loaded prior, or any routing
         // inside of them will not work.
         require([
-            // Example app
-            'apps/example/example_app'
+            // Tumblr app
+            'apps/tumblr/tumblr_app'
         ], function() {
             if (Backbone.history) {
                 Backbone.history.start({
@@ -44,7 +44,7 @@ define([
             // Start all apps that were not automatically started. Do this
             // here and not in a separate initializer because there's no
             // reason to require the apps twice in this file.
-            App.module('ExampleApp').start();
+            App.module('TumblrApp').start();
         });
     });
 

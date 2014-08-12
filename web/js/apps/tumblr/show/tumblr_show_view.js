@@ -1,16 +1,16 @@
 define([
     'app',
-    'hbars!apps/example/show/templates/layout',
-    'hbars!apps/example/show/templates/item'
+    'hbars!apps/tumblr/show/templates/layout',
+    'hbars!apps/tumblr/show/templates/item'
 ], function(App, layoutTemplate, itemTemplate) {
-    App.module('ExampleApp.Show.View', function(View, App, Backbone, Marionette, $, _) {
+    App.module('TumblrApp.Show.View', function(View, App, Backbone, Marionette, $, _) {
 
         View.Layout = Marionette.LayoutView.extend({
             regions: {
                 bodyRegion: '.body-region'
             },
 
-            className: 'example-app',
+            className: 'tumblr-app',
 
             template: layoutTemplate
         });
@@ -20,5 +20,5 @@ define([
         });
     });
 
-    return App.ExampleApp.Show.View;
+    return App.TumblrApp.Show.View;
 });
