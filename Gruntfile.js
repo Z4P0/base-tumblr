@@ -206,7 +206,7 @@ module.exports = function(grunt) {
                 options: {
                     appDir: config.requirejs.appDir,
                     baseUrl: config.requirejs.baseUrl,
-                    dir: config.requirejs.dir,
+                    dir: config.requirejs.devOutputDir,
                     mainConfigFile: config.requirejs.mainConfigFile,
                     modules: config.requirejs.modules,
                     optimize: 'none'
@@ -320,7 +320,7 @@ module.exports = function(grunt) {
         'svgstore',
         'newer:imagemin:build',
         'prepare_livereload',
-        'requirejs:prod',
+        'requirejs:dev',
         'watch'
     ];
     grunt.registerTask('default', devTasks);

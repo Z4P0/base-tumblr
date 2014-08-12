@@ -39,6 +39,7 @@ config:
         appDir: ./web/js
         baseUrl: ./
         dir: ./web/build
+        devOutputDir: ./web/rendered/js
         mainConfigFile: ./web/js/require-main.js
         modules:
             - name: require-main
