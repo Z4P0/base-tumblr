@@ -15,6 +15,11 @@ bower install
 grunt
 ```
 
+### Development Flow
+1. Run `node rendered_server.js` to server up the pre-rendered tumblr html with every post type
+2. Develop js/css as needed
+3. Deploy and test
+
 ### Annotated Source
 We use [groc](http://nevir.github.io/groc) to generate annotated source code for
 all our files. It is generated automatically when `grunt` is running and can be found at
@@ -22,24 +27,9 @@ all our files. It is generated automatically when `grunt` is running and can be 
 
 # Deploy Process for Production
 
-## Push process
-### Get latest development into master
-1. Checkout development and pull latest changes `git checkout development; git pull -r`
-2. Checkout master and pull latest changes `git checkout master; git pull -r`
-3. Merge development into master `git merge --no-ff development`
-  * Note the `--no-ff`. This forces a merge commit, which is useful when inspecting the git log.
-4. Push to master `git push origin master`
-
 ### Deploy
 1. Install dependencies `npm install;bower install`
-2. Deploy to production `grunt deploy:prod`
-  * This will ask you to select a version number. Use [semver](http://semver.org/) spec to make your decision.
-
-### Get development up to date with master
-Master will now be ahead of development because of the merge commit. Development should **always** be based off the latest verison of master.
-
-1. Checkout development and rebase off of master `git checkout development; git rebase master`
-2. Push development `git push origin development`
+2. Copy require-main.js to compiled.js and upload through tumblr's UI
 
 ## Testing
 
