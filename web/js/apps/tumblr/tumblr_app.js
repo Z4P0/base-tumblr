@@ -17,7 +17,7 @@ define([
         API = {
             show: function() {
                 new TumblrApp.Show.Controller({
-                    region: App.tumblrRegion
+                    region: App.contentRegion
                 });
 
                 // Notify application
