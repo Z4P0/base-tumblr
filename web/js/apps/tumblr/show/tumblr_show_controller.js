@@ -6,34 +6,43 @@ define([
 
         TumblrApp.Controller = Marionette.Controller.extend({
             initialize: function() {
-                this.layout = new View.Layout();
+                var apiPostsUrl;
+                var oAuthKey = 'y9AElPe0iLu3tJiwjl10UtwyEPc45kPusgs9IxoeWLizY1GO7R';
+                var self;
+                apiPostsUrl = 'http://api.tumblr.com/v2/blog/useallfivetest.tumblr.com/posts';
 
-                this.listenTo(this.layout, 'show', this.showItemView);
+                self = this;
 
-                this.show(this.layout, {
-                    loading: true,
-                    entities: this.createDummyModel()
+                jsonpCallback = function(data) {
+                    self.layout = new View.Layout();
+
+                    self.listenTo(self.layout, 'show', self.showItemView);
+
+                    self.show(self.layout, {
+                        loading: true,
+                        entities: self.createPostCollection(data)
+                    });
+                };
+
+                $.ajax({
+                    type: 'GET',
+                    url: apiPostsUrl,
+                    dataType: 'jsonp',
+                    data: {
+                        api_key: oAuthKey,
+                        jsonp: 'jsonpCallback'
+                    }
                 });
+
             },
 
             // This is a dummy function that should not be included in a
             // real application. It will simulate a fetch request on a model
             // to force the loading view to work.
-            createDummyModel: function() {
-                var SIMULATED_FETCH_DELAY = 500;
-                var deferred = $.Deferred();
-                var model = new Backbone.Model();
-
-                // Assign interal variable `_fetch`. This is done
-                // automatically for real calls to `fetch` inside of
-                // `marionette.enhancedController`.
-                model._fetch = deferred.promise();
-
-                // Resolve the deferred after 500ms. This will let you see
-                // the loading spinner.
-                _.delay(deferred.resolve, SIMULATED_FETCH_DELAY);
-
-                return model;
+            createPostCollection: function(data) {
+                var collection = new Backbone.Collection(data.response.posts);
+                console.log(collection);
+                return collection;
             },
 
             showItemView: function() {
