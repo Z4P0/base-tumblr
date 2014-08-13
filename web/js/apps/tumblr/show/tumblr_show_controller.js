@@ -14,17 +14,15 @@ define([
                 self = this;
 
                 jsonpCallback = function(data) {
-                    self.layout = new View.Layout();
-
-                    self.listenTo(self.layout, 'show', self.showItemView);
-
-                    self.show(self.layout, {
-                        loading: true,
-                        entities: self.createPostCollection(data)
+                    self.view = new View.CompositeView({
+                        collection: self.createPostCollection(data)
                     });
+
+                    //self.listenTo(self.view, 'show', self.showItemView);
+                    self.show(self.view);
                 };
 
-                $.ajax({
+                Backbone.ajax({
                     type: 'GET',
                     url: apiPostsUrl,
                     dataType: 'jsonp',
@@ -41,14 +39,7 @@ define([
             // to force the loading view to work.
             createPostCollection: function(data) {
                 var collection = new Backbone.Collection(data.response.posts);
-                console.log(collection);
                 return collection;
-            },
-
-            showItemView: function() {
-                var view = new View.Item();
-
-                this.layout.bodyRegion.show(view);
             }
         });
     });

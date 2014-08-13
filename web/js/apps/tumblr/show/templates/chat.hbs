@@ -1,0 +1,11 @@
+<div class="chat">
+    <h3>{{{title}}}</h3>
+    <ul class="conversation">
+    	{{#each dialogue}}
+        <li class="line {{{label}}}">
+            <span class="person">{{{label}}}</span>
+            <span class="person-said">{{{phrase}}}</span>
+        </li>
+        {{/each}}
+    </ul>
+</div>
