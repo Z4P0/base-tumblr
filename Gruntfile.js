@@ -33,7 +33,7 @@ module.exports = function(grunt) {
     isDevLintTask = isDevTasks && _.contains(grunt.cli.tasks, 'dev-lint');
     if (isDevLintTask) {
         watchJavascriptFiles = config.files.js.app.src;
-    } else if (isDevTasks && _.contains(grunt.cli.tasks, 'dev-require')) {
+    } else if (isDevTasks) {
         watchRequireFiles.dest.push('web/build/require-main.js');
         watchRequireFiles.src = config.files.js.app.src;
     }
@@ -47,10 +47,6 @@ module.exports = function(grunt) {
         pkg: pkg,
         sanitizeVersion: sanitizeVersion,
         semver: require('semver'),
-        // Looks for magic numbers
-        buddyjs: {
-            src: config.files.js.app.src
-        },
         imagemin: {
             build: {
                 files: [{
@@ -217,8 +213,7 @@ module.exports = function(grunt) {
             options: {
                 loadPath: config.files.scss.loadPaths,
                 quiet: true,
-                style: 'compact',
-                sourcemap: true
+                style: 'compact'
             },
             build: {
                 src: config.files.scss.app.src,
@@ -319,8 +314,8 @@ module.exports = function(grunt) {
         'sass',
         'svgstore',
         'newer:imagemin:build',
-        'prepare_livereload',
         'requirejs:dev',
+        'prepare_livereload',
         'watch'
     ];
     grunt.registerTask('default', devTasks);
@@ -376,6 +371,6 @@ module.exports = function(grunt) {
     );
 
     // Register task for validating code.
-    grunt.registerTask('validate-code', ['jshint:inline', 'jscs:inline', 'scsslint', 'buddyjs']);
+    grunt.registerTask('validate-code', ['jshint:inline', 'jscs:inline', 'scsslint']);
     grunt.registerTask('test', ['validate-code']);
 };
