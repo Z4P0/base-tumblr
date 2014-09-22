@@ -13,7 +13,7 @@ define([
 
                 self = this;
 
-                jsonpCallback = function(data) {
+                window.jsonpCallback = function(data) {
                     self.view = new View.CompositeView({
                         collection: self.createPostCollection(data)
                     });
@@ -27,7 +27,7 @@ define([
                     url: apiPostsUrl,
                     dataType: 'jsonp',
                     data: {
-                        api_key: oAuthKey,
+                        api_key: oAuthKey, //jshint ignore:line
                         jsonp: 'jsonpCallback'
                     }
                 });

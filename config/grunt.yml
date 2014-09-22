@@ -9,6 +9,7 @@ config:
                   - Gruntfile.js
                   - web/js/require-main.js
                   - web/js/app.js
+                  - web/js/app_extensions/*.js
                   - web/js/apps/**/*.js
                   - web/js/components/**/*.js
                   - web/js/data/**/*.js
@@ -22,7 +23,6 @@ config:
         scss:
             loadPaths:
               - web/css
-              - web/css/site
               - web/vendor
               - web/vendor/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap
               - web/vendor/bourbon/dist

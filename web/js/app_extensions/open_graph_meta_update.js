@@ -1,7 +1,7 @@
 define(['app'], function(App) {
     App.module('AppExtensions.OpenGraphMetaUpdate', function(OpenGraphMetaUpdate, App, Backbone, Marionette, $, _) {
 
-        var TITLE_TAG_DIVIDER = ' | '
+        var TITLE_TAG_DIVIDER = ' | ';
         var $descriptionMetaTag;
         var $head;
         var $imageMetaTag;
